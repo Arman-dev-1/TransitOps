@@ -49,6 +49,16 @@ model User {
   createdAt DateTime @default(now())
 }
 
+model Invitation {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  role      Role     @default(DRIVER)
+  token     String   @unique
+  expiresAt DateTime
+  acceptedAt DateTime?
+  createdAt DateTime @default(now())
+}
+
 model Vehicle {
   id              String        @id @default(cuid())
   regNumber       String        @unique
