@@ -10,11 +10,6 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
-}
-
-generator client {
-  provider = "prisma-client-js"
 }
 
 enum Role {
@@ -47,7 +42,8 @@ enum TripStatus {
 
 model User {
   id       String @id @default(cuid())
-  email    String @uuid @unique
+  email    String @unique
+  name     String?
   password String
   role     Role
   createdAt DateTime @default(now())

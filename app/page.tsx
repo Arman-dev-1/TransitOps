@@ -1,65 +1,42 @@
-import Image from "next/image";
+import Link from "next/link";
+
+const capabilities = [
+  ["Live dispatch", "See every vehicle, route, and service exception from one operating picture."],
+  ["Safer service", "Turn maintenance signals and driver events into fast, accountable action."],
+  ["Clear decisions", "Give operations, finance, and safety teams their own focused workspace."],
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="landing">
+      <nav className="landing-nav">
+        <Link href="/" className="landing-brand"><span>◈</span> Transit Ops</Link>
+        <div className="landing-links"><a href="#platform">Platform</a><a href="#roles">For teams</a><Link href="/login">Sign in</Link></div>
+        <Link className="nav-cta" href="/dashboard">Open command center <span>→</span></Link>
+      </nav>
+
+      <section className="hero">
+        <div className="hero-copy">
+          <p className="hero-eyebrow"><i /> REAL-TIME TRANSIT INTELLIGENCE</p>
+          <h1>Move your city with <em>confidence.</em></h1>
+          <p className="hero-text">Transit Ops brings service delivery, fleet health, and field teams into one calm, connected command center.</p>
+          <div className="hero-actions"><Link href="/dashboard" className="primary-cta">Open command center <span>→</span></Link><Link href="/login" className="secondary-cta">Sign in to Transit Ops</Link></div>
+          <div className="trust-row"><span className="trust-avatars"><b>J</b><b>M</b><b>A</b><b>R</b></span><p>Built for the people who keep service moving.</p></div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <div className="hero-visual" aria-label="Transit network preview">
+          <div className="visual-head"><span><i /> Live network</span><small>12:48 PM</small></div>
+          <div className="map-surface"><span className="line line-one" /><span className="line line-two" /><span className="line line-three" /><span className="pin pin-one">12</span><span className="pin pin-two">7</span><span className="pin pin-three">24</span><span className="map-label label-one">North terminal</span><span className="map-label label-two">Central interchange</span></div>
+          <div className="visual-stats"><div><small>On-time service</small><strong>96.8%</strong><span>↑ 1.4% this week</span></div><div><small>Vehicles in service</small><strong>124</strong><span className="neutral">14 dispatching now</span></div></div>
         </div>
-      </main>
-    </div>
+      </section>
+
+      <section className="client-strip"><span>OPERATIONS, NOT SPREADSHEETS</span><div><b>LIVE VEHICLES</b><b>SMART MAINTENANCE</b><b>SAFETY COMMAND</b><b>ROLE-BASED VIEWS</b></div></section>
+
+      <section className="platform" id="platform"><div className="section-heading"><p>ONE PLATFORM, EVERY SHIFT</p><h2>From first dispatch<br />to final report.</h2></div><div className="capabilities">{capabilities.map(([title, text], index) => <article key={title}><span>0{index + 1}</span><h3>{title}</h3><p>{text}</p><Link href="/screens">Explore <b>→</b></Link></article>)}</div></section>
+
+      <section className="role-panel" id="roles"><div><p>BUILT AROUND YOUR TEAM</p><h2>The right view<br />for every role.</h2><Link className="primary-cta light" href="/screens">Browse all screens <span>→</span></Link></div><div className="role-list"><Link href="/screens/dashboard_driver_view_standard"><span>01</span><b>Drivers</b><i>→</i></Link><Link href="/screens/dashboard_financial_analyst_view_reporting"><span>02</span><b>Financial analysts</b><i>→</i></Link><Link href="/screens/dashboard_safety_officer_view_command"><span>03</span><b>Safety officers</b><i>→</i></Link></div></section>
+
+      <footer className="landing-footer"><Link href="/" className="landing-brand"><span>◈</span> Transit Ops</Link><p>Clarity for every mile.</p><Link href="/screens">View product screens →</Link></footer>
+    </main>
   );
 }
