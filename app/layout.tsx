@@ -1,10 +1,15 @@
 import type { Metadata } from "next";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
-import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { Toaster } from "sonner";
+import { Providers } from "./providers";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  variable: "--font-montserrat",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Transit Ops | Operations Overview",
@@ -17,8 +22,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={cn("h-full antialiased", "font-sans", geist.variable)}>
-      <body className="min-h-full flex flex-col">{children}<Toaster richColors /></body>
+    <html lang="en" className={cn("h-full antialiased", montserrat.variable)}>
+      <body className="min-h-full flex flex-col font-sans">
+        <Providers>{children}</Providers>
+        <Toaster richColors />
+      </body>
     </html>
   );
 }

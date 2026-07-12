@@ -1,0 +1,384 @@
+﻿<!DOCTYPE html><html lang="en" class="light"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">try{
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#57657b",
+                        "inverse-surface": "#2d3133",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface-bright": "#f7f9fb",
+                        "surface-container-highest": "#e0e3e5",
+                        "inverse-primary": "#bec6e0",
+                        "on-tertiary-fixed": "#0b1c30",
+                        "secondary-container": "#d5e3fd",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#131b2e",
+                        "surface-variant": "#e0e3e5",
+                        "on-tertiary-fixed-variant": "#38485d",
+                        "background": "#f7f9fb",
+                        "secondary-fixed": "#d5e3fd",
+                        "error": "#ba1a1a",
+                        "on-background": "#191c1e",
+                        "on-secondary-fixed": "#0d1c2f",
+                        "tertiary-container": "#0b1c30",
+                        "on-tertiary": "#ffffff",
+                        "on-surface": "#191c1e",
+                        "error-container": "#ffdad6",
+                        "surface-tint": "#565e74",
+                        "on-surface-variant": "#45464d",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed-dim": "#b7c8e1",
+                        "secondary": "#515f74",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "primary-fixed": "#dae2fd",
+                        "primary-container": "#131b2e",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#b9c7e0",
+                        "outline-variant": "#c6c6cd",
+                        "on-secondary-fixed-variant": "#3a485c",
+                        "outline": "#76777d",
+                        "tertiary-fixed": "#d3e4fe",
+                        "primary-fixed-dim": "#bec6e0",
+                        "surface-container": "#eceef0",
+                        "on-primary": "#ffffff",
+                        "surface": "#f7f9fb",
+                        "surface-container-low": "#f2f4f6",
+                        "on-tertiary-container": "#75859d",
+                        "surface-container-high": "#e6e8ea",
+                        "primary": "#0F172A", 
+                        "on-primary-container": "#7c839b",
+                        "tertiary": "#000000",
+                        "surface-dim": "#d8dadc",
+                        "success": "#16a34a",
+                        "on-success": "#ffffff",
+                        "success-container": "#dcfce7",
+                        "on-success-container": "#14532d",
+                        "info": "#3b82f6",
+                        "on-info": "#ffffff",
+                        "info-container": "#dbeafe",
+                        "on-info-container": "#1e3a8a",
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-md": "1rem",
+                        "gutter": "1.5rem",
+                        "container-max": "1440px",
+                        "stack-sm": "0.5rem",
+                        "stack-lg": "2rem",
+                        "edge-margin": "2rem"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter", "sans-serif"],
+                        "label-sm": ["Inter", "sans-serif"],
+                        "label-md": ["Inter", "sans-serif"],
+                        "headline-md": ["Inter", "sans-serif"],
+                        "body-md": ["Inter", "sans-serif"],
+                        "body-lg": ["Inter", "sans-serif"],
+                        "headline-xl": ["Inter", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "600" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "headline-md": ["18px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-xl": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    }catch(_e){}</script></head><body class="bg-background text-on-background font-body-md min-h-screen flex flex-col"><!-- Top Navigation Placeholder -->
+    
+
+    <!-- Main Content -->
+<main class="flex-grow w-full max-w-container-max mx-auto px-edge-margin py-stack-lg">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-stack-lg gap-4">
+<div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface mb-2">Team Management</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Manage user access and invite team members to the platform.</p>
+</div>
+<div>
+<button class="bg-primary text-on-primary hover:bg-on-primary-fixed transition-colors flex items-center justify-center gap-2 px-4 py-2 rounded-DEFAULT font-label-md text-label-md" onclick="toggleDialog()">
+<span class="material-symbols-outlined" style="font-size: 18px;">add</span>
+                    Invite User
+                </button>
+</div>
+</div>
+<!-- Data Table Container (Level 1 Elevation) -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-DEFAULT shadow-sm overflow-hidden">
+<!-- Table Controls/Filters (Optional, mocked for density) -->
+<div class="p-4 border-b border-outline-variant flex items-center justify-between bg-surface-bright">
+<div class="relative w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 transform -translate-y-1/2 text-outline" style="font-size: 16px;">search</span>
+<input class="w-full pl-9 pr-3 py-1.5 text-body-md font-body-md border border-outline-variant rounded-DEFAULT focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary bg-surface-container-lowest" placeholder="Search team..." type="text">
+</div>
+<div class="flex gap-2">
+<button class="border border-outline-variant text-on-surface-variant hover:bg-surface-container-low px-3 py-1.5 rounded-DEFAULT font-label-md text-label-md flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined" style="font-size: 16px;">filter_list</span>
+                        Filter
+                    </button>
+</div>
+</div>
+<!-- Table -->
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant">
+<th class="py-3 px-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Name</th>
+<th class="py-3 px-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Email</th>
+<th class="py-3 px-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Role</th>
+<th class="py-3 px-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Status</th>
+<th class="py-3 px-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant text-body-md font-body-md">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="py-3 px-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-label-md font-bold">
+                                        JS
+                                    </div>
+<span class="font-medium text-on-surface">John Smith</span>
+</div>
+</td>
+<td class="py-3 px-4 text-on-surface-variant">john.smith@Transit Ops.com</td>
+<td class="py-3 px-4 text-on-surface-variant">Fleet Manager</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-success-container text-on-success-container">
+                                    Active
+                                </span>
+</td>
+<td class="py-3 px-4 text-right">
+<button class="text-on-surface-variant hover:text-primary transition-colors p-1 rounded-DEFAULT hover:bg-surface-variant opacity-0 group-hover:opacity-100">
+<span class="material-symbols-outlined" style="font-size: 20px;">more_horiz</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="py-3 px-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-secondary flex items-center justify-center font-label-md font-bold">
+                                        MR
+                                    </div>
+<span class="font-medium text-on-surface">Maria Rodriguez</span>
+</div>
+</td>
+<td class="py-3 px-4 text-on-surface-variant">m.rodriguez@Transit Ops.com</td>
+<td class="py-3 px-4 text-on-surface-variant">Safety Officer</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-success-container text-on-success-container">
+                                    Active
+                                </span>
+</td>
+<td class="py-3 px-4 text-right">
+<button class="text-on-surface-variant hover:text-primary transition-colors p-1 rounded-DEFAULT hover:bg-surface-variant opacity-0 group-hover:opacity-100">
+<span class="material-symbols-outlined" style="font-size: 20px;">more_horiz</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="py-3 px-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center font-label-md font-bold border border-outline-variant">
+<span class="material-symbols-outlined" style="font-size: 16px;">mail</span>
+</div>
+<span class="font-medium text-on-surface italic text-on-surface-variant">Pending Acceptance</span>
+</div>
+</td>
+<td class="py-3 px-4 text-on-surface-variant">david.chen@Transit Ops.com</td>
+<td class="py-3 px-4 text-on-surface-variant">Financial Analyst</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-info-container text-on-info-container">
+                                    Invited
+                                </span>
+</td>
+<td class="py-3 px-4 text-right">
+<button class="text-on-surface-variant hover:text-primary transition-colors p-1 rounded-DEFAULT hover:bg-surface-variant opacity-0 group-hover:opacity-100">
+<span class="material-symbols-outlined" style="font-size: 20px;">more_horiz</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="py-3 px-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-secondary flex items-center justify-center font-label-md font-bold">
+                                        EJ
+                                    </div>
+<span class="font-medium text-on-surface">Emily Johnson</span>
+</div>
+</td>
+<td class="py-3 px-4 text-on-surface-variant">e.johnson@Transit Ops.com</td>
+<td class="py-3 px-4 text-on-surface-variant">Driver</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-success-container text-on-success-container">
+                                    Active
+                                </span>
+</td>
+<td class="py-3 px-4 text-right">
+<button class="text-on-surface-variant hover:text-primary transition-colors p-1 rounded-DEFAULT hover:bg-surface-variant opacity-0 group-hover:opacity-100">
+<span class="material-symbols-outlined" style="font-size: 20px;">more_horiz</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination (Mocked) -->
+<div class="p-4 border-t border-outline-variant flex items-center justify-between bg-surface-container-lowest">
+<span class="text-label-md font-label-md text-on-surface-variant">Showing 1 to 4 of 24 users</span>
+<div class="flex gap-1">
+<button class="px-2 py-1 border border-outline-variant rounded-DEFAULT text-outline hover:bg-surface-container-low disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined" style="font-size: 16px;">chevron_left</span>
+</button>
+<button class="px-2 py-1 border border-outline-variant rounded-DEFAULT text-on-surface hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined" style="font-size: 16px;">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Placeholder -->
+    
+
+
+    <!-- Dialog Backdrop & Modal -->
+<div class="fixed inset-0 bg-inverse-surface/50 backdrop-blur-sm z-50 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-200" id="invite-dialog-backdrop">
+<!-- Dialog Content (Level 2 Elevation) -->
+<div class="bg-surface-container-lowest w-full max-w-md rounded-lg shadow-xl border border-outline-variant transform scale-95 opacity-0 transition-all duration-200 overflow-hidden flex flex-col" id="invite-dialog">
+<!-- Dialog Header -->
+<div class="px-6 py-4 border-b border-outline-variant flex justify-between items-center bg-surface-bright">
+<div>
+<h2 class="text-headline-md font-headline-md text-on-surface">Invite User</h2>
+<p class="text-label-md font-label-md text-on-surface-variant mt-1">Generate an invite link for a new team member.</p>
+</div>
+<button class="text-outline hover:text-on-surface transition-colors rounded-full p-1 hover:bg-surface-variant" onclick="toggleDialog()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Dialog Body - Form State -->
+<div class="px-6 py-6 flex flex-col gap-4" id="dialog-form-state">
+<div class="flex flex-col gap-1.5">
+<label class="text-label-md font-label-md text-on-surface font-medium" for="invite-email">Email Address</label>
+<input class="w-full px-3 py-2 text-body-md font-body-md border border-outline-variant rounded-DEFAULT focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary bg-surface-container-lowest transition-colors" id="invite-email" placeholder="colleague@company.com" type="email">
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-label-md font-label-md text-on-surface font-medium" for="invite-role">Assign Role</label>
+<select class="w-full px-3 py-2 text-body-md font-body-md border border-outline-variant rounded-DEFAULT focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary bg-surface-container-lowest transition-colors appearance-none cursor-pointer" id="invite-role">
+<option value="driver">Driver</option>
+<option value="safety">Safety Officer</option>
+<option value="financial">Financial Analyst</option>
+</select>
+<!-- Simulated select arrow -->
+<div class="pointer-events-none absolute right-8 top-[170px] flex items-center px-2 text-on-surface-variant">
+<span class="material-symbols-outlined" style="font-size: 18px;">expand_more</span>
+</div>
+<p class="text-label-sm font-label-sm text-outline mt-1 flex items-start gap-1">
+<span class="material-symbols-outlined" style="font-size: 14px;">info</span>
+                        Fleet Manager role cannot be assigned to new invites.
+                    </p>
+</div>
+</div>
+<!-- Dialog Body - Success State (Hidden by default) -->
+<div class="px-6 py-6 flex flex-col gap-4 hidden" id="dialog-success-state">
+<div class="bg-success-container/20 border border-success/30 rounded-DEFAULT p-4 mb-2 flex items-start gap-3">
+<span class="material-symbols-outlined text-success">check_circle</span>
+<div>
+<h4 class="text-body-md font-body-md font-medium text-on-surface">Invite Link Generated</h4>
+<p class="text-label-md font-label-md text-on-surface-variant mt-1">Share this link with the user â€” no email is sent automatically.</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<input class="w-full px-3 py-2 text-body-md font-body-md border border-outline-variant rounded-DEFAULT bg-surface-container-low text-on-surface-variant font-mono text-sm focus:outline-none" readonly="" type="text" value="https://Transit Ops.com/invite/abc-123">
+<button class="bg-secondary-container text-on-secondary-container hover:bg-secondary-fixed transition-colors px-3 py-2 rounded-DEFAULT flex items-center justify-center border border-outline-variant" id="copy-btn" onclick="copyLink()">
+<span class="material-symbols-outlined" style="font-size: 20px;">content_copy</span>
+</button>
+</div>
+</div>
+<!-- Dialog Footer -->
+<div class="px-6 py-4 border-t border-outline-variant bg-surface-bright flex justify-end gap-3 rounded-b-lg">
+<button class="px-4 py-2 border border-outline-variant text-on-surface hover:bg-surface-container-low transition-colors rounded-DEFAULT font-label-md text-label-md" onclick="toggleDialog()">
+                    Cancel
+                </button>
+<button class="px-4 py-2 bg-primary text-on-primary hover:bg-on-primary-fixed transition-colors rounded-DEFAULT font-label-md text-label-md" id="generate-btn" onclick="generateLink()">
+                    Generate Link
+                </button>
+<button class="px-4 py-2 bg-primary text-on-primary hover:bg-on-primary-fixed transition-colors rounded-DEFAULT font-label-md text-label-md hidden" id="done-btn" onclick="resetAndCloseDialog()">
+                    Done
+                </button>
+</div>
+</div>
+</div>
+<script>
+        const backdrop = document.getElementById('invite-dialog-backdrop');
+        const dialog = document.getElementById('invite-dialog');
+        const formState = document.getElementById('dialog-form-state');
+        const successState = document.getElementById('dialog-success-state');
+        const generateBtn = document.getElementById('generate-btn');
+        const doneBtn = document.getElementById('done-btn');
+        const copyBtn = document.getElementById('copy-btn');
+
+        function toggleDialog() {
+            const isActive = backdrop.classList.contains('active');
+            if (isActive) {
+                backdrop.classList.remove('active');
+                dialog.classList.remove('active');
+                // Reset state after animation finishes
+                setTimeout(resetDialogState, 300);
+            } else {
+                backdrop.classList.add('active');
+                dialog.classList.add('active');
+            }
+        }
+
+        function generateLink() {
+            // Simulate API Call / Generation
+            formState.classList.add('hidden');
+            successState.classList.remove('hidden');
+            
+            generateBtn.classList.add('hidden');
+            doneBtn.classList.remove('hidden');
+        }
+
+        function copyLink() {
+            copyBtn.innerHTML = '<span class="material-symbols-outlined" style="font-size: 20px;">check</span>';
+            copyBtn.classList.add('text-success');
+            setTimeout(() => {
+                copyBtn.innerHTML = '<span class="material-symbols-outlined" style="font-size: 20px;">content_copy</span>';
+                copyBtn.classList.remove('text-success');
+            }, 2000);
+        }
+
+        function resetDialogState() {
+            formState.classList.remove('hidden');
+            successState.classList.add('hidden');
+            
+            generateBtn.classList.remove('hidden');
+            doneBtn.classList.add('hidden');
+            
+            document.getElementById('invite-email').value = '';
+        }
+
+        function resetAndCloseDialog() {
+            toggleDialog();
+        }
+
+        // Close on backdrop click
+        backdrop.addEventListener('click', (e) => {
+            if (e.target === backdrop) {
+                toggleDialog();
+            }
+        });
+    </script></body></html>

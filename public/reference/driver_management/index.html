@@ -1,0 +1,414 @@
+﻿<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Driver Management - Transit Ops</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#000000",
+                        "secondary-fixed-dim": "#b9c7e0",
+                        "primary-fixed": "#dae2fd",
+                        "secondary-fixed": "#d5e3fd",
+                        "tertiary-fixed-dim": "#b7c8e1",
+                        "secondary-container": "#d5e3fd",
+                        "surface-tint": "#565e74",
+                        "surface-bright": "#f7f9fb",
+                        "surface-variant": "#e0e3e5",
+                        "on-error": "#ffffff",
+                        "surface-container-highest": "#e0e3e5",
+                        "primary-fixed-dim": "#bec6e0",
+                        "primary-container": "#131b2e",
+                        "on-surface-variant": "#45464d",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#f2f4f6",
+                        "surface-container-high": "#e6e8ea",
+                        "on-primary-fixed": "#131b2e",
+                        "on-secondary": "#ffffff",
+                        "outline": "#76777d",
+                        "surface-dim": "#d8dadc",
+                        "on-error-container": "#93000a",
+                        "tertiary-container": "#0b1c30",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "inverse-surface": "#2d3133",
+                        "outline-variant": "#c6c6cd",
+                        "surface": "#f7f9fb",
+                        "on-tertiary-fixed": "#0b1c30",
+                        "inverse-primary": "#bec6e0",
+                        "on-primary-container": "#7c839b",
+                        "on-background": "#191c1e",
+                        "error": "#ba1a1a",
+                        "surface-container": "#eceef0",
+                        "on-tertiary-container": "#75859d",
+                        "tertiary-fixed": "#d3e4fe",
+                        "on-surface": "#191c1e",
+                        "secondary": "#515f74",
+                        "on-secondary-fixed": "#0d1c2f",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-container": "#57657b",
+                        "on-tertiary-fixed-variant": "#38485d",
+                        "on-secondary-fixed-variant": "#3a485c",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "background": "#f7f9fb",
+                        "primary": "#000000"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-sm": "0.5rem",
+                        "stack-md": "1rem",
+                        "edge-margin": "2rem",
+                        "stack-lg": "2rem",
+                        "gutter": "1.5rem",
+                        "container-max": "1440px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-xl": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-xl": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["18px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background antialiased flex flex-col min-h-screen font-body-md text-body-md">
+<!-- TopNavBar -->
+<header class="bg-surface-container-lowest border-b border-outline-variant w-full top-0 z-50">
+<div class="flex justify-between items-center w-full px-edge-margin h-16 max-w-container-max mx-auto">
+<div class="flex items-center gap-6">
+<span class="font-headline-lg text-headline-lg font-bold text-primary">Transit Ops</span>
+<!-- Desktop Nav -->
+<nav class="hidden md:flex gap-6 items-center">
+<a class="text-secondary font-medium hover:text-primary transition-colors active:opacity-80 transition-all font-body-md text-body-md" href="#">Vehicles</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 active:opacity-80 transition-all font-body-md text-body-md" href="#">Drivers</a>
+<a class="text-secondary font-medium hover:text-primary transition-colors active:opacity-80 transition-all font-body-md text-body-md" href="#">Trips</a>
+<a class="text-secondary font-medium hover:text-primary transition-colors active:opacity-80 transition-all font-body-md text-body-md" href="#">Maintenance</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden md:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm">search</span>
+<input class="pl-9 pr-4 py-1.5 bg-surface-container-low border border-outline-variant rounded text-body-md font-body-md focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all w-64" placeholder="Search drivers..." type="text"/>
+</div>
+<button aria-label="Notifications" class="p-1.5 text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button aria-label="Settings" class="p-1.5 text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-variant overflow-hidden border border-outline-variant ml-2">
+<img alt="User profile" class="object-cover w-full h-full" data-alt="A detailed, professional headshot of an individual representing a logistics fleet user profile. The person is wearing neutral business casual attire. The background is a clean, minimal gradient of slate gray and soft white, reflecting an authoritative and modern enterprise software environment. Lighting is soft and even, highlighting a serious but approachable expression." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7ziFYx5km_ZpgJx-TZmUR1GOj3Nc4orwMhdhVquQaoDUdgj5snEUJ9mxa5HVBfpWMCWcgtcmdXRFESeIY7fJMRiTiFUD1dDoZwEHDDz8VlXHjm0THnUAT-f7lRgWiBQjySXh_IvW6rsio0LVhIzsAF_m3Rdz6ERFQzGPUu1Fl-5UlkNj5a7mPPJEYagtcsqh0Zi8MTAzA67CB5dZHvTOM1YwiEhAHRSSuKryWdKS4m0SFr-vegk0w"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow w-full max-w-container-max mx-auto px-edge-margin py-stack-lg">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-stack-lg gap-stack-md">
+<div>
+<h1 class="font-headline-xl text-headline-xl text-primary mb-1">Drivers</h1>
+<p class="text-secondary font-body-lg text-body-lg">Manage and monitor driver performance and safety compliance.</p>
+</div>
+<button class="bg-[#0F172A] text-white px-4 py-2 rounded font-body-md text-body-md flex items-center gap-2 hover:bg-opacity-90 transition-all active:shadow-inner" onclick="document.getElementById('addDriverModal').classList.remove('hidden')">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">add</span>
+                Add Driver
+            </button>
+</div>
+<!-- Dashboard Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Sidebar / KPI -->
+<div class="lg:col-span-3 space-y-stack-md">
+<div class="bg-surface-container-lowest border border-outline-variant rounded p-6 shadow-sm">
+<h3 class="font-label-sm text-label-sm uppercase text-secondary mb-4 tracking-wider">Driver Fleet Overview</h3>
+<div class="space-y-4">
+<div class="flex justify-between items-baseline">
+<span class="font-body-md text-body-md text-on-surface">Total Drivers</span>
+<span class="font-headline-lg text-headline-lg text-primary">86</span>
+</div>
+<div class="w-full bg-surface-variant h-1 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[86%]"></div>
+</div>
+<div class="flex justify-between items-baseline">
+<span class="font-body-md text-body-md text-on-surface">Active on Duty</span>
+<span class="font-headline-md text-headline-md text-green-700">74</span>
+</div>
+<div class="flex justify-between items-baseline">
+<span class="font-body-md text-body-md text-on-surface">Off Duty / Rest</span>
+<span class="font-headline-md text-headline-md text-secondary">10</span>
+</div>
+<div class="flex justify-between items-baseline">
+<span class="font-body-md text-body-md text-on-surface">Suspended</span>
+<span class="font-headline-md text-headline-md text-error">2</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded p-6 shadow-sm">
+<h3 class="font-label-sm text-label-sm uppercase text-secondary mb-4 tracking-wider">Fleet Safety Score</h3>
+<div class="flex items-center gap-4">
+<div class="text-4xl font-headline-xl text-primary">92</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-green-700">Excellent</span>
+<span class="font-label-md text-label-md text-secondary">Top 10% Industry</span>
+</div>
+</div>
+<!-- Placeholder for sparkline -->
+<div class="mt-4 h-12 w-full border-b border-dashed border-outline-variant relative flex items-end">
+<div class="w-1/6 h-2/6 bg-primary-fixed-dim rounded-t ml-1"></div>
+<div class="w-1/6 h-3/6 bg-primary-fixed-dim rounded-t ml-1"></div>
+<div class="w-1/6 h-2/6 bg-primary-fixed-dim rounded-t ml-1"></div>
+<div class="w-1/6 h-4/6 bg-primary-fixed-dim rounded-t ml-1"></div>
+<div class="w-1/6 h-5/6 bg-primary-fixed-dim rounded-t ml-1"></div>
+<div class="w-1/6 h-full bg-[#0F172A] rounded-t ml-1"></div>
+</div>
+</div>
+</div>
+<!-- Main Content Area: Data Table -->
+<div class="lg:col-span-9">
+<div class="bg-surface-container-lowest border border-outline-variant rounded shadow-sm overflow-hidden flex flex-col h-full">
+<!-- Table Header Actions -->
+<div class="p-4 border-b border-outline-variant flex justify-between items-center bg-surface-bright">
+<div class="flex items-center gap-2">
+<button class="px-3 py-1.5 border border-outline-variant rounded text-secondary font-label-md text-label-md flex items-center gap-1 hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-sm">filter_list</span> Filter
+                            </button>
+<button class="px-3 py-1.5 border border-outline-variant rounded text-secondary font-label-md text-label-md flex items-center gap-1 hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-sm">sort</span> Sort
+                            </button>
+</div>
+<div class="text-secondary font-label-md text-label-md">Showing 1-10 of 86</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant">
+<th class="p-4 font-label-sm text-label-sm uppercase text-secondary tracking-wider font-semibold">Driver</th>
+<th class="p-4 font-label-sm text-label-sm uppercase text-secondary tracking-wider font-semibold">License #</th>
+<th class="p-4 font-label-sm text-label-sm uppercase text-secondary tracking-wider font-semibold">Expiry Date</th>
+<th class="p-4 font-label-sm text-label-sm uppercase text-secondary tracking-wider font-semibold">Safety Score</th>
+<th class="p-4 font-label-sm text-label-sm uppercase text-secondary tracking-wider font-semibold">Status</th>
+<th class="p-4 font-label-sm text-label-sm uppercase text-secondary tracking-wider font-semibold text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Row 1 -->
+<tr class="hover:bg-[#F1F5F9] transition-colors group">
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-primary-fixed-dim text-on-primary-fixed flex items-center justify-center font-bold text-sm">
+                                                MS
+                                            </div>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-medium text-primary">Marcus Sterling</span>
+<span class="font-label-md text-label-md text-secondary">CDL-A</span>
+</div>
+</div>
+</td>
+<td class="p-4 font-body-md text-body-md text-on-surface font-mono text-sm">TX-892341</td>
+<td class="p-4 font-body-md text-body-md text-on-surface">Oct 12, 2026</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<span class="font-body-md text-body-md font-medium">98/100</span>
+</div>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-blue-100 text-blue-800 border border-blue-200">
+                                            On Trip
+                                        </span>
+</td>
+<td class="p-4 text-right">
+<button class="p-1 text-secondary hover:text-primary opacity-0 group-hover:opacity-100 transition-all"><span class="material-symbols-outlined text-sm">edit</span></button>
+<button class="p-1 text-secondary hover:text-primary opacity-0 group-hover:opacity-100 transition-all"><span class="material-symbols-outlined text-sm">more_vert</span></button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-[#F1F5F9] transition-colors group">
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-variant text-secondary flex items-center justify-center font-bold text-sm">
+                                                JD
+                                            </div>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-medium text-primary">Jane Doe</span>
+<span class="font-label-md text-label-md text-secondary">CDL-B</span>
+</div>
+</div>
+</td>
+<td class="p-4 font-body-md text-body-md text-on-surface font-mono text-sm">CA-112994</td>
+<td class="p-4 font-body-md text-body-md text-error font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">warning</span> Sep 01, 2024
+                                    </td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<span class="font-body-md text-body-md font-medium">85/100</span>
+</div>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-green-100 text-green-800 border border-green-200">
+                                            Available
+                                        </span>
+</td>
+<td class="p-4 text-right">
+<button class="p-1 text-secondary hover:text-primary opacity-0 group-hover:opacity-100 transition-all"><span class="material-symbols-outlined text-sm">edit</span></button>
+<button class="p-1 text-secondary hover:text-primary opacity-0 group-hover:opacity-100 transition-all"><span class="material-symbols-outlined text-sm">more_vert</span></button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-[#F1F5F9] transition-colors group">
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-primary-fixed-dim text-on-primary-fixed flex items-center justify-center font-bold text-sm">
+                                                RB
+                                            </div>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-medium text-primary">Robert Banks</span>
+<span class="font-label-md text-label-md text-secondary">CDL-A</span>
+</div>
+</div>
+</td>
+<td class="p-4 font-body-md text-body-md text-on-surface font-mono text-sm">NY-556112</td>
+<td class="p-4 font-body-md text-body-md text-on-surface">Jan 15, 2027</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<span class="font-body-md text-body-md font-medium text-error">64/100</span>
+</div>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-red-100 text-red-800 border border-red-200">
+                                            Suspended
+                                        </span>
+</td>
+<td class="p-4 text-right">
+<button class="p-1 text-secondary hover:text-primary opacity-0 group-hover:opacity-100 transition-all"><span class="material-symbols-outlined text-sm">edit</span></button>
+<button class="p-1 text-secondary hover:text-primary opacity-0 group-hover:opacity-100 transition-all"><span class="material-symbols-outlined text-sm">more_vert</span></button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-[#F1F5F9] transition-colors group">
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-variant text-secondary flex items-center justify-center font-bold text-sm">
+                                                AL
+                                            </div>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-medium text-primary">Amanda Lin</span>
+<span class="font-label-md text-label-md text-secondary">CDL-A</span>
+</div>
+</div>
+</td>
+<td class="p-4 font-body-md text-body-md text-on-surface font-mono text-sm">WA-992100</td>
+<td class="p-4 font-body-md text-body-md text-on-surface">May 22, 2025</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<span class="font-body-md text-body-md font-medium">91/100</span>
+</div>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-gray-100 text-gray-800 border border-gray-200">
+                                            Off Duty
+                                        </span>
+</td>
+<td class="p-4 text-right">
+<button class="p-1 text-secondary hover:text-primary opacity-0 group-hover:opacity-100 transition-all"><span class="material-symbols-outlined text-sm">edit</span></button>
+<button class="p-1 text-secondary hover:text-primary opacity-0 group-hover:opacity-100 transition-all"><span class="material-symbols-outlined text-sm">more_vert</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Footer -->
+<div class="p-4 border-t border-outline-variant bg-surface-bright flex justify-between items-center mt-auto">
+<button class="px-3 py-1 text-secondary font-label-md text-label-md border border-outline-variant rounded disabled:opacity-50" disabled="">Previous</button>
+<div class="flex gap-1">
+<button class="w-8 h-8 flex items-center justify-center bg-[#0F172A] text-white rounded font-label-md text-label-md">1</button>
+<button class="w-8 h-8 flex items-center justify-center text-secondary hover:bg-surface-container rounded font-label-md text-label-md">2</button>
+<button class="w-8 h-8 flex items-center justify-center text-secondary hover:bg-surface-container rounded font-label-md text-label-md">3</button>
+<span class="w-8 h-8 flex items-center justify-center text-secondary">...</span>
+<button class="w-8 h-8 flex items-center justify-center text-secondary hover:bg-surface-container rounded font-label-md text-label-md">9</button>
+</div>
+<button class="px-3 py-1 text-primary font-label-md text-label-md border border-outline-variant rounded hover:bg-surface-container transition-colors">Next</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface border-t border-outline-variant w-full bottom-0 mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center w-full py-stack-lg px-edge-margin max-w-container-max mx-auto">
+<div class="font-label-sm text-label-sm font-bold text-primary mb-4 md:mb-0">Transit Ops</div>
+<div class="flex gap-4 mb-4 md:mb-0">
+<a class="text-secondary font-label-md text-label-md hover:text-primary underline transition-all duration-200" href="#">Privacy Policy</a>
+<a class="text-secondary font-label-md text-label-md hover:text-primary underline transition-all duration-200" href="#">Terms of Service</a>
+<a class="text-secondary font-label-md text-label-md hover:text-primary underline transition-all duration-200" href="#">Support</a>
+</div>
+<div class="text-secondary font-label-md text-label-md">Â© 2024 Transit Ops Logistics Solutions</div>
+</div>
+</footer>
+<!-- Add Driver Modal (Dialog) -->
+<div class="hidden fixed inset-0 z-[100] flex items-center justify-center bg-tertiary/20 backdrop-blur-sm p-4" id="addDriverModal">
+<div class="bg-surface-container-lowest border border-outline-variant rounded shadow-[0_10px_15px_-3px_rgba(0,0,0,0.05)] w-full max-w-md overflow-hidden transform transition-all">
+<div class="px-6 py-4 border-b border-outline-variant flex justify-between items-center">
+<h2 class="font-headline-md text-headline-md text-primary">Add New Driver</h2>
+<button class="text-secondary hover:text-primary" onclick="document.getElementById('addDriverModal').classList.add('hidden')">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="p-6 space-y-4">
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-on-surface">Full Name</label>
+<input class="w-full border border-outline-variant rounded px-3 py-2 text-body-md font-body-md focus:border-[#0F172A] focus:ring-1 focus:ring-[#0F172A] outline-none transition-all" placeholder="Enter driver's full name" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-on-surface">License Number</label>
+<input class="w-full border border-outline-variant rounded px-3 py-2 text-body-md font-body-md focus:border-[#0F172A] focus:ring-1 focus:ring-[#0F172A] outline-none transition-all font-mono text-sm" placeholder="e.g. TX-123456" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-on-surface">License Expiry Date</label>
+<div class="relative">
+<input class="w-full border border-outline-variant rounded px-3 py-2 text-body-md font-body-md focus:border-[#0F172A] focus:ring-1 focus:ring-[#0F172A] outline-none transition-all appearance-none" type="date"/>
+</div>
+</div>
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-on-surface">Initial Status</label>
+<select class="w-full border border-outline-variant rounded px-3 py-2 text-body-md font-body-md focus:border-[#0F172A] focus:ring-1 focus:ring-[#0F172A] outline-none transition-all bg-white">
+<option value="available">Available</option>
+<option value="off_duty">Off Duty</option>
+<option value="suspended">Suspended</option>
+</select>
+</div>
+</div>
+<div class="px-6 py-4 border-t border-outline-variant bg-surface-bright flex justify-end gap-3">
+<button class="px-4 py-2 border border-outline-variant rounded text-primary font-body-md text-body-md hover:bg-surface-container transition-colors" onclick="document.getElementById('addDriverModal').classList.add('hidden')">Cancel</button>
+<button class="px-4 py-2 bg-[#0F172A] text-white rounded font-body-md text-body-md hover:bg-opacity-90 active:shadow-inner transition-all" onclick="document.getElementById('addDriverModal').classList.add('hidden')">Save Driver</button>
+</div>
+</div>
+</div>
+</body></html>

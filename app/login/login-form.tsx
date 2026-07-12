@@ -3,14 +3,89 @@
 import { Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
 import { signIn } from "next-auth/react";
+import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 
+const roleRedirects: Record<string, string> = {
+  FLEET_MANAGER: "/admin/dashboard",
+  DRIVER: "/driver/dashboard",
+  SAFETY_OFFICER: "/safety/dashboard",
+  FINANCIAL_ANALYST: "/finance/dashboard",
+};
+
 export function LoginForm() {
+  const searchParams = useSearchParams();
+  const registered = searchParams.get("registered") === "1";
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
   async function submit(formData: FormData) {
     setError("");
-    await signIn("credentials", { email: formData.get("email"), password: formData.get("password"), callbackUrl: "/admin/dashboard" });
+    setLoading(true);
+    const email = String(formData.get("email") ?? "");
+    const password = String(formData.get("password") ?? "");
+
+    const result = await signIn("credentials", {
+      email,
+      password,
+      redirect: false,
+    });
+
+    setLoading(false);
+
+    if (!result || result.error) {
+      setError("Invalid email or password. Please try again.");
+      return;
+    }
+
+    const sessionRes = await fetch("/api/auth/session");
+    const session = await sessionRes.json();
+    const role = session?.user?.role ?? "FLEET_MANAGER";
+    window.location.href = roleRedirects[role] ?? "/admin/dashboard";
   }
-  return <main className="min-h-screen flex items-center justify-center bg-gray-100"><div className="w-full max-w-md rounded-xl bg-white shadow-lg p-8"><h1 className="text-3xl font-bold text-center mb-2">Transit Ops</h1><p className="text-center text-gray-500 mb-8">Sign in to your account</p><form action={submit} className="space-y-5"><div><label className="block mb-2 text-sm font-medium">Email</label><input name="email" type="email" placeholder="Enter email" required autoComplete="email" className="w-full border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-black" /></div><div><label className="block mb-2 text-sm font-medium">Password</label><div className="relative"><input name="password" type={showPassword ? "text" : "password"} placeholder="Enter password" required autoComplete="current-password" className="w-full border rounded-lg px-4 py-3 pr-12 focus:outline-none focus:ring-2 focus:ring-black" /><button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-3">{showPassword ? <EyeOff size={20} /> : <Eye size={20} />}</button></div></div>{error && <p className="text-sm text-red-600">{error}</p>}<button className="w-full bg-black text-white py-3 rounded-lg hover:bg-gray-900">Sign In</button></form><p className="text-center text-sm mt-6">Need an account? <span className="font-semibold">Ask your Transit Ops administrator for an invitation.</span></p><Link href="/" className="block text-center text-sm mt-4 underline">Back to home</Link></div></main>;
+
+  return (
+    <main className="auth-page">
+      <div className="auth-card">
+        <Link href="/" className="landing-brand">
+          <span>◈</span> Transit Ops
+        </Link>
+        <p className="auth-kicker">SIGN IN</p>
+        <h1>Welcome back</h1>
+        {registered && <p className="auth-success">Admin account created. Sign in to open your command center.</p>}
+        <form action={submit}>
+          <label>
+            Email
+            <input name="email" type="email" placeholder="Enter email" required autoComplete="email" />
+          </label>
+          <label>
+            Password
+            <div className="password-field">
+              <input
+                name="password"
+                type={showPassword ? "text" : "password"}
+                placeholder="Enter password"
+                required
+                autoComplete="current-password"
+              />
+              <button type="button" onClick={() => setShowPassword(!showPassword)} aria-label="Toggle password visibility">
+                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+              </button>
+            </div>
+          </label>
+          {error && <p className="form-error">{error}</p>}
+          <button type="submit" disabled={loading}>
+            {loading ? "Signing in…" : "Sign in"} <span>→</span>
+          </button>
+        </form>
+        <p className="auth-switch">
+          Need an admin workspace? <Link href="/signup">Create account</Link>
+        </p>
+        <Link href="/" className="auth-back">
+          Back to home
+        </Link>
+      </div>
+    </main>
+  );
 }
